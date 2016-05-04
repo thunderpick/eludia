@@ -3767,7 +3767,7 @@ sub draw_node {
 
 	if ($r -> headers_in -> {'X-Requested-With'} eq 'XMLHttpRequest') {
 
-		my $node = {
+		return {
 			id             => $options -> {id},
 			text           => $options -> {label},
 			parent         => $i -> {parent},
@@ -3778,10 +3778,7 @@ sub draw_node {
 			clipboard_text => $i -> {clipboard_text},
 		};
 
-		return $node;
-
 	}
-
 
 	my $node = {
 		id    => $options -> {id},

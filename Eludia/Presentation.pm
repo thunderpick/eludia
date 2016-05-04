@@ -2719,6 +2719,8 @@ sub draw_node {
 
 	my @buttons;
 
+	my $any_btn = 0;
+
 	foreach my $button (@{$_ [0]}) {
 
 		next if $button -> {off};
@@ -2739,9 +2741,10 @@ sub draw_node {
 
 		push @buttons, $button;
 
+		$any_btn ||= $button ne 'BREAK';
 	}
 
-	$i -> {__menu} = draw_vert_menu ($i, \@buttons) if ((grep {$_ ne BREAK} @buttons) > 0);
+	$i -> {__menu} = draw_vert_menu ($i, \@buttons) if $any_btn;
 
 	return 	$_SKIN -> draw_node ($options, $i);
 
